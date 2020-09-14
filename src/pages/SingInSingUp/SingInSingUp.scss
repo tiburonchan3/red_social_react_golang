@@ -55,6 +55,12 @@ a {
                 &:first-of-type{
                     margin-bottom: 40px;
                 }
+                &:focus, &:active ,&:hover{
+                    background: transparent;
+                    border: none;
+                    border-bottom: 3px solid $grey_dark;
+                    box-shadow: none;
+                }
             }
             .form-control ~ .border {
                 position: absolute;
@@ -257,5 +263,7 @@ a {
     text-align: center;
     margin-top: 30px;
 }
-
-
+.spinner-border{
+    width: 25px;
+    height: 25px;
+}

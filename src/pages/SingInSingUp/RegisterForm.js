@@ -1,12 +1,16 @@
 import React,{useState} from 'react'
-import {Form,Button} from 'react-bootstrap'
+import {Form,Button,Spinner} from 'react-bootstrap'
 import {values,size} from 'lodash'
 import {toast} from 'react-toastify';
 import {isEmailValid} from '../../utils/validation';
+import {signUpApi} from '../../api/auth'
 
 export default function RegisterForm() {
 
     const [formData,setFormData] = useState(initiatFormValue());
+
+    const [signUploading, setSignUploading] = useState(false)
+
 
     const onSubmit = e =>{
         e.preventDefault();
@@ -25,7 +29,20 @@ export default function RegisterForm() {
         }else if(size(formData.password)!==6){
             toast.warning("la password debe contener 6 caracteres");
         }else{
-            toast.success("formulario correcto")
+            setSignUploading(true);
+            signUpApi(formData).then(response => {
+                if(response.code){
+                    toast.warning(response.message)
+                }else{
+                    toast.success("Se guardo con exito")
+                    setFormData(initiatFormValue);
+                }
+            }).catch(err => {
+                toast.error("Error en el servidor");
+            }).finally(()=>{
+                setSignUploading(false);
+                window.location.reload();
+            })
         }
     }
     const onChange = e =>{
@@ -80,7 +97,11 @@ export default function RegisterForm() {
                     />
                     <span className="border"></span>
                 </Form.Group>
-                <Button variant="primary" type="submit">Registrarse</Button>
+                <Button
+                    variant="primary"
+                    type="submit">
+                        {!signUploading ? "Registrarse" : <Spinner animation="border"/>}
+                </Button>
             </Form>
         </div>
     )

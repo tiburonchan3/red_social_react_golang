@@ -1,26 +1,80 @@
-import React from 'react'
-import {Form,Button} from 'react-bootstrap';
-import LogoWhite from '../../assets/geckoo.png';
+import React, {useState} from 'react'
+import {Form,Button,Spinner} from 'react-bootstrap'
+import {values,size, initial} from 'lodash'
+import {toast} from 'react-toastify'
+import {isEmailValid} from '../../utils/validation'
+import LogoWhite from '../../assets/geckoo.png'
+import { loginApi,SetTokenApi } from '../../api/auth'
 
 export default function LoginForm() {
+    const [formData, setFormData] = useState(initialValue)
+    const [loginLoading, setLoginLoading] = useState(false)
+    const onSubmit = e =>{
+        e.preventDefault()
+        let validCount = 0;
+        values(formData).some(value =>{
+            value && validCount++
+            return null
+        })
+        if(validCount !== size(formData)){
+            toast.warning("Todos los campos son necesarios");
+        }else if(!isEmailValid(formData.email)){
+            toast.warning("El correo es incorrecto")
+        }else{
+            setLoginLoading(true);
+            loginApi(formData).then(response =>{
+                if(response.message){
+                    toast.warning(response.message)
+                }else{
+                    SetTokenApi(response.token)
+                }
+            }).catch( ()=>{
+                toast.error("error del servidor");
+            }).finally( () =>{
+                setLoginLoading(false)
+            })
+        }
+    }
+    const onChange = e =>{
+        setFormData({...formData,[e.target.name]:e.target.value})
+    }
     return (
-        <div className="login__form">
+        <Form onSubmit={onSubmit} onChange={onChange}>
+            <div className="login__form">
                 <img src={LogoWhite} alt=""></img>
                 <Form.Group className="group">
-                    <label htmlFor="user" className="label">Username</label>
-                    <Form.Control></Form.Control>
+                    <label htmlFor="user" className="label">E-mail</label>
+                    <Form.Control
+                        type="email"
+                        defaultValue={formData.email }
+                        name="email"
+                    />
                     <span className="border"></span>
                 </Form.Group>
                 <Form.Group className="group">
                     <label htmlFor="user" className="label">Password</label>
-                    <Form.Control></Form.Control>
+                    <Form.Control
+                        type="password"
+                        defaultValue={formData.password }
+                        name="password"
+                    />
                     <span className="border"></span>
                 </Form.Group>
-                <Button variant="primary">Iniciar Sesion</Button>
+                <Button variant="primary" type="submit">
+                   {
+                       !loginLoading ? "Iniciar Sesion" : <Spinner animation="border"/>
+                   }
+                </Button>
                 <div className="hr"></div>
                 <div className="foot-lnk">
                     <a href="#forgot">Forgot Password?</a>
                 </div>
             </div>
+        </Form>
     )
+}
+
+const initialValue = {
+    email: "",
+    password:""
 }
