@@ -1,5 +1,8 @@
 import React,{useState} from 'react'
 import {Form,Button} from 'react-bootstrap'
+import {values,size} from 'lodash'
+import {toast} from 'react-toastify';
+import {isEmailValid} from '../../utils/validation';
 
 export default function RegisterForm() {
 
@@ -8,6 +11,22 @@ export default function RegisterForm() {
     const onSubmit = e =>{
         e.preventDefault();
         console.log(formData);
+        let validCount = 0
+        values(formData).some(value => {
+            value && validCount++
+            return null
+        })
+        if(validCount!==size(formData)){
+            toast.warning("Todos los campos son necesarios");
+        }else if(!isEmailValid(formData.email)){
+            toast.warning("El email es invalido");
+        }else if(formData.password!==formData.repeatPassword){
+            toast.warning("las password no coinciden");
+        }else if(size(formData.password)!==6){
+            toast.warning("la password debe contener 6 caracteres");
+        }else{
+            toast.success("formulario correcto")
+        }
     }
     const onChange = e =>{
         setFormData({...formData,[e.target.name]:e.target.value})
