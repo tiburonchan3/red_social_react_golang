@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {Form,Button,Spinner} from 'react-bootstrap'
-import {values,size, initial} from 'lodash'
+import {values,size} from 'lodash'
 import {toast} from 'react-toastify'
-import {isEmailValid} from '../../utils/validation'
-import LogoWhite from '../../assets/geckoo.png'
-import { loginApi,SetTokenApi } from '../../api/auth'
+import {isEmailValid} from '../utils/validation'
+import LogoWhite from '../assets/geckoo.png'
+import { loginApi,SetTokenApi } from '../api/auth'
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+    const {setRefreshCheckLogin} = props
     const [formData, setFormData] = useState(initialValue)
     const [loginLoading, setLoginLoading] = useState(false)
     const onSubmit = e =>{
@@ -26,7 +27,9 @@ export default function LoginForm() {
                 if(response.message){
                     toast.warning(response.message)
                 }else{
+                    toast.success("Datos Correctos");
                     SetTokenApi(response.token)
+                    setRefreshCheckLogin(true)
                 }
             }).catch( ()=>{
                 toast.error("error del servidor");
@@ -49,7 +52,6 @@ export default function LoginForm() {
                         defaultValue={formData.email }
                         name="email"
                     />
-                    <span className="border"></span>
                 </Form.Group>
                 <Form.Group className="group">
                     <label htmlFor="user" className="label">Password</label>
@@ -58,17 +60,17 @@ export default function LoginForm() {
                         defaultValue={formData.password }
                         name="password"
                     />
-                    <span className="border"></span>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                    {
                        !loginLoading ? "Iniciar Sesion" : <Spinner animation="border"/>
                    }
                 </Button>
-                <div className="hr"></div>
                 <div className="foot-lnk">
                     <a href="#forgot">Forgot Password?</a>
                 </div>
+                <div className="hr"></div>
+
             </div>
         </Form>
     )

@@ -1,19 +1,31 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './SingInSingUp.scss';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm'
+import LoginForm from '../../components/LoginForm';
+import RegisterForm from '../../components/RegisterForm'
 
-export default function SingInSingUp() {
+
+export default function SingInSingUp(props) {
+    const {setRefreshCheckLogin} = props
+    const [modalShow, setModalShow] = useState(false);
+    const [userRegister, setUserRegister] = useState(false)
+    const [checkRegister,setCheckRegister] = useState(false)
+    useEffect(() => {
+        setUserRegister(true)
+        setCheckRegister(false)
+    }, [checkRegister])
+    if(!userRegister) return null
     return (
         <div className="login-wrap">
         <div className="singIn__singUp">
-            <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked /><label htmlFor="tab-1" className="tab">Iniciar Sesion</label>
-            <input id="tab-2" type="radio" name="tab" className="sign-up" /><label htmlFor="tab-2" className="tab">Crear Cuenta</label>
+            <h2 className="lead text-center">Bienvenido!!!</h2>
+            <div className="hr"></div>
             <div className="login-form">
-            <LoginForm/>
-            <RegisterForm/>
+            <LoginForm setRefreshCheckLogin={setRefreshCheckLogin}/>
+
             </div>
         </div>
+        <a className="lead register__link text-center" onClick={() => setModalShow(true)}>Aun no tienes una cuenta?</a>
+        <RegisterForm modalShow={modalShow} setModalShow={setModalShow}/>
     </div>
     );
 }

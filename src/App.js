@@ -3,15 +3,18 @@ import SingInSingUp from './pages/SingInSingUp';
 import {ToastContainer} from 'react-toastify'
 import {authContext} from './utils/context';
 import {isUserLoggedApi} from './api/auth'
-// import {API_HOST, TOKEN} from './utils/constants';
-// import JwtDecode from 'jwt-decode'
 
 
 export default function App() {
     const [user,setUser] = useState(null);
+    const [loadUser,setLoadUser] = useState(false);
+    const [refreshCheckLogin,setRefreshCheckLogin] = useState(false)
     useEffect(() => {
       setUser(isUserLoggedApi())
-    }, [])
+      setRefreshCheckLogin(false)
+      setLoadUser(true)
+    }, [refreshCheckLogin])
+    if(!loadUser) return null
     return(
         <authContext.Provider value={user}>
             {user ?(
@@ -20,7 +23,7 @@ export default function App() {
                 </div>
             ) : (
                 <div>
-                    <SingInSingUp/>
+                    <SingInSingUp  setRefreshCheckLogin={setRefreshCheckLogin}/>
                 </div>
             )}
             <ToastContainer

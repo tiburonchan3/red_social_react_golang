@@ -16,7 +16,7 @@ a {
     height: 100%;
     top:10%;
 	position: absolute;
-    padding: 50px 40px 30px 40px;
+    padding: 40px 30px 40px 30px;
     border-radius: 30px;
 	background: $blue_dark;
 	.login__form {
@@ -24,10 +24,7 @@ a {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		position: absolute;
-		transform: rotateY(180deg);
-		backface-visibility: hidden;
-        transition: all 0.6s linear;
+        position: absolute;
         img{
             width: 100px;
             margin-left: 35%;
@@ -55,161 +52,17 @@ a {
                 &:first-of-type{
                     margin-bottom: 40px;
                 }
-                &:focus, &:active ,&:hover{
+                &:focus, &:active ,&:hover,&:valid,&:empty{
                     background: transparent;
                     border: none;
                     border-bottom: 3px solid $grey_dark;
                     box-shadow: none;
                 }
             }
-            .form-control ~ .border {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background-color: #27ad8a;
-            }
-
-            .form-control:focus ~ .border {
-                width: 100%;
-                transition: 0.5s;
-            }
-        }
-	}
-	.register__form {
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		position: absolute;
-		transform: rotateY(180deg);
-		backface-visibility: hidden;
-        transition: all 0.6s linear;
-        .btn.btn-primary{
-            width: 100%;
-            border-radius: 20px;
-            padding: 10px;
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        .form-group{
-            margin-top: 5px;
-            .form-control{
-                border-radius: 0;
-                background: transparent;
-                border: none;
-                border-bottom: 3px solid $grey_dark;
-                box-shadow: none;
-                outline: none;
-                padding: 5px;
-                font-size: 18px;
-                color:#fff;
-            }
-            .form-control ~ .border {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background-color: #27ad8a;
-            }
-
-            .form-control:focus ~ .border {
-                width: 100%;
-                transition: 0.5s;
-            }
-        }
-	}
-	.sign-in {
-        display: none;
-		&:checked {
-			+ {
-				.tab {
-					color: #fff;
-                    border-color: #1161ee;
-					+ {
-						.sign-up {
-							+ {
-								.tab {
-									+ {
-										.login-form {
-											.login__form {
-												transform: rotate(0);
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.sign-up {
-		display: none;
-		&:checked {
-			+ {
-				.tab {
-					color: #fff;
-					border-color: #1161ee;
-					+ {
-						.login-form {
-							.register__form {
-								transform: rotate(0);
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	.tab {
-        text-align: center;
-        cursor: pointer;
-		text-transform: uppercase;
-		font-size: 24px;
-        padding-bottom: 15px;
-        display: inline-flex;
-        align-items: center;
-        border-bottom: 2px solid transparent;
-        &:first-of-type{
-            margin-right: 100px;
         }
 	}
 }
 .login-form {
-	.group {
-        width: 100%;
-        position: relative;
-		.check {
-			display: none;
-			&:checked {
-				+ {
-					label {
-						color: #fff;
-						.icon {
-							background: #1161ee;
-							&:before {
-								transform: scale(1) rotate(45deg);
-							}
-							&:after {
-								transform: scale(1) rotate(-45deg);
-							}
-						}
-					}
-				}
-			}
-		}
-		.label {
-			text-transform: uppercase;
-			width: 100%;
-			color: #fff;
-			display: block;
-			color: #aaa;
-			font-size: 15px;
-		}
 		margin-bottom: 15px;
 		input[data-type="password"] {
 			text-security: circle;
@@ -248,7 +101,6 @@ a {
 				}
 			}
 		}
-	}
 	min-height: 345px;
 	position: relative;
 	perspective: 1000px;
@@ -256,14 +108,73 @@ a {
 }
 .hr {
 	height: 2px;
-	margin-top: 30px;
+	margin-top: 20px;
 	background: rgba(255, 255, 255, 0.2);
 }
 .foot-lnk {
-    text-align: center;
-    margin-top: 30px;
+    text-align: right;
+    margin-top: 20px;
 }
 .spinner-border{
     width: 25px;
     height: 25px;
+}
+
+.register_modal{
+    background: rgba(0,0,0,.6);
+    .modal-dialog{
+        width: 800px;
+    }
+    .modal-content{
+        background-color: $blue_dark;
+        padding: 30px;
+        border-radius: 25px;
+        .modal-body{
+            .form-group{
+                margin-top: 10px;
+                .form-control{
+                    border-radius: 0;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 3px solid $grey_dark;
+                    box-shadow: none;
+                    outline: none;
+                    padding: 10px;
+                    font-size: 15px;
+                    color:#fff;
+                    &:first-of-type{
+                        margin-bottom: 40px;
+                    }
+                    &:focus, &:active ,&:hover,&:valid,&:empty{
+                        background: transparent;
+                        border: none;
+                        border-bottom: 3px solid $grey_dark;
+                        box-shadow: none;
+                    }
+                }
+
+            }
+        }
+    }
+}
+.close{
+    color:#fff;
+}
+.register__form{
+    .btn.btn-primary{
+        width: 100%;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+.register__link{
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: -20%;
+    left:50%;
 }

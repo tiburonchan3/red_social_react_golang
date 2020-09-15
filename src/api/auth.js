@@ -5,7 +5,8 @@ export function signUpApi(user){
     const url = `${API_HOST}/registro`;
     const User_temp = {
         ...user,
-        email: user.email.toLowerCase()
+        email: user.email.toLowerCase(),
+        fechaN:new Date()
     }
     delete User_temp.repeatPassword;
     const params = {
