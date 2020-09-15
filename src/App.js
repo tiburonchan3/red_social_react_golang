@@ -3,6 +3,7 @@ import SingInSingUp from './pages/SingInSingUp';
 import {ToastContainer} from 'react-toastify'
 import {authContext} from './utils/context';
 import {isUserLoggedApi} from './api/auth'
+import Routing from './routes/routing';
 
 
 export default function App() {
@@ -18,9 +19,7 @@ export default function App() {
     return(
         <authContext.Provider value={user}>
             {user ?(
-                <div>
-                    <h1>Estas loggueado</h1>
-                </div>
+                <Routing/>
             ) : (
                 <div>
                     <SingInSingUp  setRefreshCheckLogin={setRefreshCheckLogin}/>

@@ -34,6 +34,7 @@ export default function RegisterForm(props) {
                 }else{
                     toast.success("Se guardo con exito")
                     setData(initiatFormValue);
+                    setModalShow(false)
                 }
             }).catch(err => {
                 toast.error("Error en el servidor");

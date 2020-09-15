@@ -3,7 +3,6 @@ import './SingInSingUp.scss';
 import LoginForm from '../../components/LoginForm';
 import RegisterForm from '../../components/RegisterForm'
 
-
 export default function SingInSingUp(props) {
     const {setRefreshCheckLogin} = props
     const [modalShow, setModalShow] = useState(false);
@@ -21,7 +20,6 @@ export default function SingInSingUp(props) {
             <div className="hr"></div>
             <div className="login-form">
             <LoginForm setRefreshCheckLogin={setRefreshCheckLogin}/>
-
             </div>
         </div>
         <a className="lead register__link text-center" onClick={() => setModalShow(true)}>Aun no tienes una cuenta?</a>
