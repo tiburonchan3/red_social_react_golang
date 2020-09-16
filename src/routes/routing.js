@@ -3,13 +3,14 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import {map} from 'lodash'
 import configRouting from './configRouting'
 
-export default function routing() {
+export default function routing(props) {
+    const {setRefreshCheckLogin} = props
     return (
         <Router>
             <Switch>
                 {map(configRouting, (route,index) =>(
                     <Route key={index} path={route.path} exact={route.exact}>
-                        <route.page/>
+                        <route.page setRefreshCheckLogin={setRefreshCheckLogin}/>
                     </Route>
                 ))}
             </Switch>

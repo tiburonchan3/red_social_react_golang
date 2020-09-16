@@ -19,7 +19,7 @@ export default function App() {
     return(
         <authContext.Provider value={user}>
             {user ?(
-                <Routing/>
+                <Routing setRefreshCheckLogin={setRefreshCheckLogin}/>
             ) : (
                 <div>
                     <SingInSingUp  setRefreshCheckLogin={setRefreshCheckLogin}/>

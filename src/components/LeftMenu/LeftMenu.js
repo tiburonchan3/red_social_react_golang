@@ -6,11 +6,16 @@ import LogoWhite from "../../assets/geckoo.png"
 import Home from "../../assets/home.png"
 import Users from "../../assets/friends.png"
 import Account from "../../assets/user.png"
-import Logout from "../../assets/logout.png"
+import Exit from "../../assets/logout.png"
 import user from "../../assets/foto.jpg"
 import {logoutApi} from '../../api/auth'
 
-export default function LeftMenu() {
+export default function LeftMenu(props) {
+    const {setRefreshCheckLogin} = props
+    const Logout = ()=>{
+        logoutApi()
+        setRefreshCheckLogin(true)
+    }
     return (
         <div className="left-menu">
           <img src={LogoWhite} alt="none" className="logo"></img>
@@ -24,8 +29,8 @@ export default function LeftMenu() {
           <Link to="/" className="link">
                 <img src={Account} className="icon_link" alt="null" /> Mi Cuenta
           </Link>
-          <Link to="" className="link" onClick={logoutApi}>
-                <img src={Logout} className="icon_link" alt="null" /> Cerrar Sesion
+          <Link to="" className="link" onClick={Logout}>
+                <img src={Exit} className="icon_link" alt="null" /> Cerrar Sesion
           </Link>
         </div>
     )
