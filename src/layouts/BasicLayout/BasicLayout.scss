@@ -1,0 +1,15 @@
+@import '../../scss/index.scss';
+.basic-layout{
+    &__menu{
+        padding-right: 0 !important;
+    }
+    &__content{
+        padding: 50px ;
+        height: 100vh;
+        overflow-y: scroll;
+        border-right: 1px solid $grey_dark;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+}
