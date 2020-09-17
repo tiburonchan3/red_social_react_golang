@@ -6,12 +6,15 @@ import {toast} from 'react-toastify'
 import {withRouter} from 'react-router-dom'
 import {getUserApi} from '../../api/user'
 import BannerAvatar from '../../components/User/BannerAvatar'
+import useAuth from '../../hooks/useAuth'
+import InfoUser from '../../components/User/InfoUser'
 
 function User(props)
 {
     const {setRefreshCheckLogin,match} = props
     const {params} = match
     const [user,setUser] = useState(null)
+    const loggedUser = useAuth()
     useEffect(() => {
         getUserApi(params.id).then(response=>{
             if(!response) toast.error("Usuario no existente")
@@ -27,8 +30,8 @@ function User(props)
                 {user ? `${user.nombre} ${user.apellidos}` : "Usuario no encontrado"}
             </h2>
             </div>
-            <BannerAvatar user={user}></BannerAvatar>
-            <div>Info Usuario</div>
+            <BannerAvatar user={user} loggedUser={loggedUser}></BannerAvatar>
+            <InfoUser user={user} ></InfoUser>
             <div className="user__publications">Publicaciones</div>
         </BasicLayout>
     )

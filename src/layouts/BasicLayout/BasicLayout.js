@@ -5,7 +5,6 @@ import LeftMenu from '../../components/LeftMenu';
 import {getTokenApi} from '../../api/auth'
 
 export default function BasicLayout(props) {
-    console.log(getTokenApi())
     const {className, setClassName,setRefreshCheckLogin,children} = props
     return (
         <Container className={`basic-layout ${className} themed-container`} fluid={true}>
