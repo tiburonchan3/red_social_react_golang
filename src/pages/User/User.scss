@@ -1,0 +1,12 @@
+@import "../../scss/index.scss";
+.user{
+    &__title{
+        border-bottom: 1px solid $grey_dark;
+        padding: 15px;
+        h2{
+            font-size: 20px;
+            margin-bottom: 0px;
+            font-weight: bold;
+        }
+    }
+}
