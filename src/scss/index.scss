@@ -27,3 +27,33 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
+.react-datepicker-wrapper{
+    width: 100%;
+    height: 35px;
+    .react-datepicker__input-container{
+        width: 100%;
+        input{
+            width: 100%;
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid $grey_dark;
+            box-shadow: none;
+            outline: none;
+            padding: 5px;
+            font-size: 15px;
+            color:$grey_light;
+            &:hover,&:active,&:focus{
+                background: transparent;
+                box-shadow: none;
+                color:$grey_light;
+                outline: none;
+            }
+        }
+    }
+}
+.label {
+    text-transform: uppercase;
+    color:$primary_grey;
+    font-size: 15px;
+}

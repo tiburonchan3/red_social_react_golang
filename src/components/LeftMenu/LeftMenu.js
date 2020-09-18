@@ -5,7 +5,7 @@ import LogoWhite from "../../assets/geckoo.png"
 import Home from "../../assets/home.png"
 import Users from "../../assets/friends.png"
 import Account from "../../assets/user.png"
-import Exit from "../../assets/logout.png"
+import Off from "../../assets/icons/power-button.png"
 import {logoutApi} from '../../api/auth'
 import useAuth from '../../hooks/useAuth'
 
@@ -29,7 +29,7 @@ export default function LeftMenu(props) {
                 <img src={Account} className="icon_link" alt="null" /> Mi Cuenta
           </Link>
           <Link to="" className="link" onClick={Logout}>
-                <img src={Exit} className="icon_link" alt="null" /> Cerrar Sesion
+                <img src={Off} className="icon_link" alt="null" /> Cerrar Sesion
           </Link>
         </div>
     )
