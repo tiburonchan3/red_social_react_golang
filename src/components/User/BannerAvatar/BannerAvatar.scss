@@ -22,15 +22,26 @@
     }
     .option{
         position: absolute;
-        bottom: -50px;
+        bottom: -70px;
         right: 15px;
         button{
             border-radius: 50px;
             background-color: $primary;
-            width:150px;
+            width:200px;
+            padding: 10px;
+            font-size: 20px;
+            .unfollow-text{
+                display: none;
+            }
             &:hover{
-                background: $primary;
-                opacity: 0.6;
+                background: $danger;
+                opacity: 0.9;
+                .unfollow-text{
+                    display: contents;
+                }
+                .following-text{
+                    display:none;
+                }
             }
         }
     }

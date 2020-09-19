@@ -34,6 +34,7 @@ export default function RegisterForm(props) {
                 }else{
                     toast.success("Se guardo con exito")
                     setData(initiatFormValue);
+                    console.log(response)
                     setModalShow(false)
                 }
             }).catch(err => {

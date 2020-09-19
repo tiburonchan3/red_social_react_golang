@@ -1,0 +1,68 @@
+@import '../../../scss/index.scss';
+.modal{
+    background: rgba($color: #000000, $alpha: .8);
+        .modal-content{
+            background: $blue-dark;
+            .modal-header{
+                img{
+                    width: 30px;
+                    margin-top: 4px;
+                    cursor: pointer;
+                }
+                .modal-title{
+                    width: 400px;
+                    margin-right:320px;
+                }
+            }
+            .modal-body{
+
+                .form-data__show{
+                    display: contents;
+                    transition-property: display;
+                    transition-duration: 1s;
+                    transition-timing-function: linear;
+                    .img{
+                        width: 100%;
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        height: 450px;
+                        margin-bottom: 20px;
+                    }
+                        .form-group{
+                            textarea.form-control{
+                                height: 150px;
+                                border:none;
+                            }
+                            .error{
+                                color:$danger;
+                            }
+                        }
+                    .btn-next,.btn-pub{
+                        width: 200px;
+                        padding:10px;
+                        font-size: 20px;
+                        border-radius: 40px;
+                        float: right;
+                    }
+                }
+                .form-data__hidde{
+                    display: none;
+                    width: 200px;
+                }
+                .btn-submit{
+                    position: absolute;
+                    top:-55px;
+                    right: 25px;
+                    border-radius:50px;
+                    font-size: 15px;
+                    padding:5px;
+                    width:100px;
+                    text-align: center;
+                    &.img-data__show{
+                        display: none;
+                    }
+                }
+            }
+        }
+}
