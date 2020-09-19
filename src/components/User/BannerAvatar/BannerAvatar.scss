@@ -1,0 +1,48 @@
+@import "../../../scss/colors";
+.banner-avatar{
+    position: relative;
+    background-color: $grey_light;
+    height: 320px;
+    margin-bottom: 60px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .avatar{
+        position: absolute;
+        bottom:-50px;
+        left:20px;
+        background-color: $grey_light;
+        width:200px;
+        height: 200px;
+        border:4px solid $border_dark;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .option{
+        position: absolute;
+        bottom: -70px;
+        right: 15px;
+        button{
+            border-radius: 50px;
+            background-color: $primary;
+            width:200px;
+            padding: 10px;
+            font-size: 20px;
+            .unfollow-text{
+                display: none;
+            }
+            &:hover{
+                background: $danger;
+                opacity: 0.9;
+                .unfollow-text{
+                    display: contents;
+                }
+                .following-text{
+                    display:none;
+                }
+            }
+        }
+    }
+}
