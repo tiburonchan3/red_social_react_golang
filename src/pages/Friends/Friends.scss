@@ -1,0 +1,55 @@
+@import '../../scss/index.scss';
+.friends{
+    &__title{
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h2{
+            font-size: 20px;
+            margin-bottom: 0px;
+            font-weight: bold;
+        }
+        input{
+            width: 50%;
+            border-radius: 50px;
+            color:#fff;
+            padding: 6px 20px;
+            font-size: 12px;
+            border:0;
+            background: #21303D;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    &__options{
+        display: flex;
+        .btn.btn-primary{
+            background: transparent !important;
+            font-weight: bold;
+            font-size: 14px;
+            border:none;
+            border-bottom: 1px solid #21303D;
+            padding: 15px 0;
+            border-radius: 0px;
+            &:hover{
+                background: rgba(29,161,242,0.1) !important;
+            }
+            &.active{
+                border-bottom: 3px solid $primary;
+                background: rgba(29,161,242,0.1) !important;
+            }
+        }
+    }
+    &__loading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 50px;
+        >div{
+            margin-bottom: 10px;
+        }
+    }
+}

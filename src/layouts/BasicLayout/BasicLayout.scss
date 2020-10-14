@@ -1,14 +1,64 @@
 @import '../../scss/index.scss';
 .basic-layout{
     &__menu{
-        padding-right: 0 !important;
+        padding-left: 0 !important;
+        flex: 0 0 20%;
+            max-width: 20%;
     }
     &__content{
         height: 100vh;
+        padding-left: 20px;
         overflow-y: scroll;
         border-right: 1px solid $grey_dark;
         &::-webkit-scrollbar{
             display: none;
+        }
+        flex: 0 0 80%;
+            max-width: 80%;
+    }
+    .bars{
+        visibility: hidden;
+        position: absolute;
+        bottom:1%;
+        left: 1%;
+        background: $primary;
+        border:none;
+        font-size: 25px;
+        outline: hidden;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        &:active,&:hover,&:focus{
+            outline: hidden;
+        }
+
+    }
+    @media screen and (max-width:450px){
+        .bars{
+            visibility: visible;
+        }
+        &__menu.col-3{
+            position: absolute;
+            left:-80%;
+            flex: 0 0 80%;
+            max-width: 80%;
+        }
+        &__menu.visible{
+            left: 0;
+            transition: left 1s;
+            z-index: 2;
+        }
+        &__menu.invisible{
+            left: -80%;
+            transition: all 1s;
+            z-index: 2;
+
+        }
+        &__content.col-9{
+            flex: 0 0 100%;
+            max-width: 100%;
+            position: relative;
         }
     }
 }

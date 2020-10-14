@@ -22,7 +22,7 @@ export default function SingInSingUp(props) {
             <LoginForm setRefreshCheckLogin={setRefreshCheckLogin}/>
             </div>
         </div>
-        <a className="lead register__link text-center" onClick={() => setModalShow(true)}>Aun no tienes una cuenta?</a>
+        <a href className="lead register__link text-center" onClick={() => setModalShow(true)}>Aun no tienes una cuenta?</a>
         <RegisterForm modalShow={modalShow} setModalShow={setModalShow}/>
     </div>
     );
