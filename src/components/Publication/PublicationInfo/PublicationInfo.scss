@@ -1,0 +1,34 @@
+@import '../../../scss/index.scss';
+.publication{
+    &__txt{
+        margin-top: 10px;
+    }
+    &__tnlg{
+        color:$primary;
+        margin-bottom: 10px;
+    }
+    &__code{
+        .komBMP{
+            width: 100%;
+            height: 400px;
+            overflow-y: scroll;
+            padding: 30px !important;
+        }
+    }
+    &__like-comment{
+        font-weight: bold;
+            font-size: 30px;
+        .like{
+            margin-left: 30px;
+            .count{
+                margin-left: 10px;
+            }
+        }
+        .comments{
+            margin-left: 150px;
+            .count{
+                margin-left: 10px;
+            }
+        }
+    }
+}

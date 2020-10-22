@@ -1,8 +1,5 @@
 import React from 'react'
 import './InfoUser.scss'
-import Location from '../../../assets/icons/location-pin.png'
-import BirthDay from '../../../assets/icons/time-and-date.png'
-import Link from '../../../assets/icons/link.png'
 import moment from 'moment'
 import localization from 'moment/locale/es'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'

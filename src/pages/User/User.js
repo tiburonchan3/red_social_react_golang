@@ -20,6 +20,7 @@ function User(props){
     const [user,setUser] = useState(null)
     const loggedUser = useAuth()
     const [publications, setPublications] = useState(null)
+    const [refreshPublication, setRefreshPublication] = useState(false)
     const [showModal, setShowModal] = useState(false)
     const [page, setPage] = useState(1)
     const [loadingPublication,setLoadingPublication] = useState(false)
@@ -35,11 +36,10 @@ function User(props){
         GetUserPublicationApi(params.id,1)
         .then(response=>{
             setPublications(response)
-            console.log(response)
         }).catch(()=>{
             setPublications([])
         })
-    }, [params,showModal])
+    }, [params,showModal,refreshPublication])
     const morePublication = ()=>{
         const pageTemp = page + 1
         setLoadingPublication(true)
@@ -71,7 +71,7 @@ function User(props){
             <AddPublication showModal={showModal} setShowModal={setShowModal}></AddPublication>
             <div className="user__publications">
                 <h3>Publicaciones</h3>
-                {publications &&(<PublicationList publications={publications}/>)}
+                {publications &&(<PublicationList setRefreshPublication={setRefreshPublication} loggedUser={loggedUser} publications={publications}/>)}
             </div>
                <Button onClick={morePublication} className="more">
                {!loadingPublication ? (

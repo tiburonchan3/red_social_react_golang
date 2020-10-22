@@ -1,0 +1,25 @@
+@import '../../../scss/index.scss';
+.popover{
+    background: $blue_dark_second;
+    .arrow::after{
+        border-left-color: $blue_dark_second;
+    }
+    .popover-header{
+        background: $blue_dark_second;
+        color:#fff
+    }
+    .popover-body{
+        color:#fff;
+        .buttons{
+            display: block;
+            .btn.btn-primary{
+                margin-left: 15px;
+                border-radius: 10px;
+                font-size: 12px;
+                span{
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

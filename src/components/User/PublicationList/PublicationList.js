@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Image} from 'react-bootstrap'
+import {Image,Media, Popover} from 'react-bootstrap'
 import {map} from 'lodash'
 import {getUserApi} from '../../../api/user'
 import {replaceURLWithHTMLLinks} from '../../../utils/functions'
@@ -8,23 +8,40 @@ import NotFound from '../../../assets/no-image.jpg'
 import "./PublicationList.scss"
 import moment from 'moment'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faThumbsUp,faCommentAlt} from '@fortawesome/free-solid-svg-icons'
+import {faThumbsUp,faCommentAlt,faEllipsisH} from '@fortawesome/free-solid-svg-icons'
 import {CopyBlock,dracula} from 'react-code-blocks'
+import {Link} from 'react-router-dom'
+import PopOver from '../../Publication/PopOver'
 
 export default function List(props) {
-    const {publications} = props
+    const {publications,setRefreshPublication} = props
+    console.log(publications)
     return (
         <div className="publication-list">
             {map(publications,(publication,index) =>(
-                <Publication key={index} publication={publication}/>
+                <Publication key={index} publication={publication} setRefreshPublication={setRefreshPublication}/>
             ))}
         </div>
     )
 }
 function Publication(props){
-    const {publication} = props
+
+    const {publication,loggedUser,setRefreshPublication} = props
     const [userInfo, setUserInfo] = useState(null)
     const [avatarUrl, setAvatarUrl] = useState(null)
+    const isUserPublication = ()=>{
+        if(loggedUser._id === publication.userid){
+            return true
+        } else {
+            return false
+        }
+    }
+    const [pop, setPop] = useState(false)
+    const [target, setTarget] = useState(null);
+    const ShowPop = (e)=>{
+        setPop(!pop);
+        setTarget(e.target)
+    }
     useEffect(() => {
        getUserApi(publication.userid).then((response)=>{
            setUserInfo(response)
@@ -43,7 +60,13 @@ function Publication(props){
         <div>
             <div className="name">
                 {userInfo?.nombre} {userInfo?.apellidos}
-                <span className="date">{moment(publication.fechaPublicacion).calendar()}</span>
+                <span className="date">{moment(publication.fecha).calendar()}</span>
+                {isUserPublication ?
+                    <span className="more-options" onClick={ShowPop}>
+                        <FontAwesomeIcon icon={faEllipsisH}/>
+                    </span> :
+                    null
+                }
             </div>
             <div
                 className="link"
@@ -66,11 +89,15 @@ function Publication(props){
                    <FontAwesomeIcon icon={faThumbsUp} />
                     <span className="count">140</span>
                </span>
-               <span className="comments">
-                   <FontAwesomeIcon icon={faCommentAlt} />
-                   <span className="count">140</span>
-               </span>
+               <Media as={Link} to={`/u/${publication.userid}/${publication._id}`}>
+               <span  className="comments">
+                    <FontAwesomeIcon icon={faCommentAlt} />
+                    <span className="count">140</span>
+                </span>
+               </Media>
+
             </div>
+            <PopOver setRefreshPublication={setRefreshPublication} id={publication._id} setPop={setPop} pop={pop} target={target}></PopOver>
         </div>
     </div>)
 }
