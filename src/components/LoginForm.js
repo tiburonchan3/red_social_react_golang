@@ -69,8 +69,6 @@ export default function LoginForm(props) {
                 <div className="foot-lnk">
                     <a href="#forgot">Forgot Password?</a>
                 </div>
-                <div className="hr"></div>
-
             </div>
         </Form>
     )

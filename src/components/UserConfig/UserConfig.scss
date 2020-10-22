@@ -6,15 +6,15 @@
         overflow: hidden;
         border-radius: 30px;
         .modal-header{
-            padding: 20px;
+            padding: 10px;
             display: flex;
-            img{
-                width: 25px;
-                float: left;
+            span{
+                font-size: 18px;
+                margin-left: 10px;
                 cursor: pointer;
             }
             .modal-title{
-                font-size: 18px;
+                font-size: 15px;
                 float: left;
                 margin-right: 550px;
             }

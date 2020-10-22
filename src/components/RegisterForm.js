@@ -58,7 +58,7 @@ export default function RegisterForm(props) {
         className="register_modal"
     >
          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Title>
             Completa los siguientes datos
             </Modal.Title>
         </Modal.Header>
@@ -66,7 +66,7 @@ export default function RegisterForm(props) {
         <div className="register__form">
             <Form onSubmit={submitForm} onChange={changeForm}>
                 <Row>
-                    <Col xs={6}>
+                    <Col xs={6} sm={12}>
                         <Form.Group className="group">
                             <label htmlFor="user" className="label">Nombre</label>
                             <Form.Control
@@ -76,7 +76,7 @@ export default function RegisterForm(props) {
                             />
                         </Form.Group>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} sm={12}>
                         <Form.Group className="group">
                             <label htmlFor="user" className="label">Apellidos</label>
                             <Form.Control

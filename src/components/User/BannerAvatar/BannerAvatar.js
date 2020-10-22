@@ -3,9 +3,11 @@ import './BannerAvatar.scss'
 import {API_HOST} from '../../../utils/constants'
 import {checkFollowApi,followApi,unFollowApi} from '../../../api/follow'
 import NotFound from '../../../assets/avatar-no-found.png'
-import {Button,Spinner} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import ConfigUser from '../../UserConfig'
 import { toast } from 'react-toastify'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPencilAlt} from '@fortawesome/free-solid-svg-icons'
 
 export default function BannerAvatar(props) {
     const [modalShow, setModalShow] = useState(false);
@@ -43,7 +45,12 @@ export default function BannerAvatar(props) {
            <div className="avatar" style={{backgroundImage: `url('${avatarUrl}')` }}/>
            {user &&(
                 <div className="option">
-                    {loggedUser._id === user.id && <Button onClick={()=>setModalShow(true)}>Editar perfil</Button>}
+                    {loggedUser._id === user.id &&
+                        <Button onClick={()=>setModalShow(true)} className="edit-btn">
+                            <FontAwesomeIcon icon={faPencilAlt} />
+                            <span>Editar perfil</span>
+                        </Button>
+                    }
                     {loggedUser._id !== user.id &&(
                         following !== null &&(
                             (following ?

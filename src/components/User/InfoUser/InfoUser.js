@@ -1,10 +1,9 @@
 import React from 'react'
 import './InfoUser.scss'
-import Location from '../../../assets/icons/location-pin.png'
-import BirthDay from '../../../assets/icons/time-and-date.png'
-import Link from '../../../assets/icons/link.png'
 import moment from 'moment'
 import localization from 'moment/locale/es'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faMapMarkerAlt,faLink,faBirthdayCake} from '@fortawesome/free-solid-svg-icons'
 
 export default function InfoUser(props) {
     const {user} = props
@@ -24,19 +23,20 @@ export default function InfoUser(props) {
             <div className="more-info">
                 {user?.ubicacion && (
                     <p>
-                        <img src={Location}/>{user.ubicacion}
+                        <FontAwesomeIcon icon={faMapMarkerAlt} />
+                        <span>{user.ubicacion}</span>
                     </p>
                 )}
                 {user?.SitioWeb && (
                     <p>
-                        <img src={Link}/>
-                        <a href={user.SitioWeb} target="_blank" rel="noopener noreferrer">{user.SitioWeb}</a>
+                        <FontAwesomeIcon icon={faLink} />
+                        <span><a href={user.SitioWeb} target="_blank" rel="noopener noreferrer">{user.SitioWeb}</a></span>
                     </p>
                 )}
                  {user?.fechaN && (
                     <p>
-                        <img src={BirthDay}/>
-                        {moment(user.fechaN).locale("es",localization).format("LL")}
+                        <FontAwesomeIcon icon={faBirthdayCake} />
+                        <span>{moment(user.fechaN).locale("es",localization).format("LL")}</span>
                     </p>
                 )}
             </div>

@@ -1,12 +1,48 @@
 @import "../../scss/index.scss";
 .user{
+    .btn.btn-primary.addPublication{
+        margin-top: 0.625rem;
+        border-radius: 0;
+        background: transparent;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 5px;
+        border:1.5px solid $primary;
+        border-radius: 20px;
+        width: 170px;
+        &:hover,&:active,&:focus{
+            background: $primary;
+        }
+        span{
+            margin-left: 5px;
+        }
+    }
+    .btn.btn-primary.more{
+        margin-left: 40%;
+        font-weight: bold;
+        padding: 10px 30px;
+        margin-top:20px;
+        margin-bottom: 20px;
+        background: transparent;
+        border: none;
+        &:hover, &:focus{
+            color:$primary;
+        }
+    }
     &__title{
         border-bottom: 1px solid $grey_dark;
         padding: 15px;
         h2{
-            font-size: 20px;
+            font-size: 15px;
             margin-bottom: 0px;
             font-weight: bold;
+        }
+    }
+    &__publications{
+        h3{
+            padding: 15px;
+            font-size: 18px;
+            border-bottom: 1px solid $grey_dark;
         }
     }
 }

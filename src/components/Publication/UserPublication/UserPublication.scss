@@ -1,0 +1,23 @@
+@import '../../../scss/index.scss';
+.info{
+    margin-top: 1rem;
+    display: flex;
+    img{
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+    }
+    &__user{
+        margin-left: 1rem;
+        p{
+            font-weight: bold;
+            font-size: 22px;
+        }
+    }
+    &__fecha{
+        color: $primary_grey;
+        margin-left: 3rem;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+}

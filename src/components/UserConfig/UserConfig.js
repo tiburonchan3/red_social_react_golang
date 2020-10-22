@@ -1,8 +1,9 @@
 import React from 'react'
 import './UserConfig.scss'
-import Close from '../../assets/icons/cancel.png'
 import {Modal} from 'react-bootstrap'
 import EditUserForm from '../User/EditUserForm'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
 
 
 export default function UserConfig(props) {
@@ -16,7 +17,9 @@ export default function UserConfig(props) {
         className="user-config"
     >
          <Modal.Header>
-            <img src={Close} alt="none" onClick={()=>setModalShow(false)}></img>
+            <span onClick={()=>setModalShow(false)}>
+                <FontAwesomeIcon icon={faTimes}/>
+            </span>
             <Modal.Title>
                 Datos del usuario
             </Modal.Title>

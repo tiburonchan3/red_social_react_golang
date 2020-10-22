@@ -1,36 +1,37 @@
 import React from 'react'
 import './LeftMenu.scss'
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import LogoWhite from "../../assets/geckoo.png"
-import Home from "../../assets/home.png"
-import Users from "../../assets/friends.png"
-import Account from "../../assets/user.png"
-import Off from "../../assets/icons/power-button.png"
 import {logoutApi} from '../../api/auth'
 import useAuth from '../../hooks/useAuth'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faUser,faHome,faUsers,faSignOutAlt,faTimes} from '@fortawesome/free-solid-svg-icons'
 
 export default function LeftMenu(props) {
     const userLog = useAuth()
-    const {setRefreshCheckLogin} = props
+    const {setRefreshCheckLogin,setVisible} = props
     const Logout = ()=>{
         logoutApi()
         setRefreshCheckLogin(true)
     }
     return (
         <div className="left-menu">
-          <img src={LogoWhite} alt="none" className="logo"></img>
-          <Link to="/" className="link">
-                <img src={Home} className="icon_link" alt="null" /> Inicio
-          </Link>
-          <Link to="/" className="link">
-                <img src={Users} className="icon_link" alt="null" /> Usuarios
-          </Link>
-          <Link to={`/${userLog?._id}`} className="link">
-                <img src={Account} className="icon_link" alt="null" /> Mi Cuenta
-          </Link>
-          <Link to="" className="link" onClick={Logout}>
-                <img src={Off} className="icon_link" alt="null" /> Cerrar Sesion
-          </Link>
+            <span className="close" onClick={()=>setVisible('invisible')}>
+                <FontAwesomeIcon icon={faTimes}/>
+            </span>
+            <img src={LogoWhite} alt="none" className="logo"></img>
+            <NavLink exact to="/" className="link">
+                <FontAwesomeIcon icon={faHome}/> Inicio
+            </NavLink>
+            <NavLink exact to="/friends" className="link">
+                <FontAwesomeIcon icon={faUsers} /> Usuarios
+            </NavLink>
+            <NavLink exact to={`/${userLog?._id}`} className="link">
+                <FontAwesomeIcon icon={faUser} /> Mi Cuenta
+            </NavLink>
+            <p className="link" onClick={Logout}>
+                <FontAwesomeIcon icon={faSignOutAlt} /> Cerrar Sesion
+            </p>
         </div>
     )
 }

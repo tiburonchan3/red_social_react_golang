@@ -3,8 +3,7 @@ import SingInSingUp from './pages/SingInSingUp';
 import {ToastContainer} from 'react-toastify'
 import {authContext} from './utils/context';
 import {isUserLoggedApi} from './api/auth'
-import Routing from './routes/routing';
-
+import Routing from './routes/routing'
 
 export default function App() {
     const [user,setUser] = useState(null);

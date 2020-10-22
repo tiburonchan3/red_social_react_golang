@@ -18,3 +18,66 @@ export function AddPublicationApi(formData){
         return err
     })
 }
+export function GetUserPublicationApi(idUser,page){
+    const url = `${API_HOST}/readPublicacion?id=${idUser}&pagina=${page}`
+    const params = {
+        headers:{
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${getTokenApi()}`
+        }
+    }
+    return fetch(url,params)
+    .then((response)=>{
+        return response.json()
+    })
+    .catch((err)=>{
+        return err
+    })
+}
+export function GetAllPublicationApi(page = 1){
+    const url = `${API_HOST}/allPublicaciones?page=${page}`
+    const params = {
+        headers:{
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${getTokenApi()}`
+        }
+    }
+    return fetch(url,params)
+    .then((response)=>{
+        return response.json()
+    })
+    .catch((err)=>{
+        return err
+    })
+}
+export function DeletePublication(id){
+    const url = `${API_HOST}/deletePublicacion?id=${id}`
+    const params = {
+        method: "DELETE",
+        headers:{
+            Authorization: `Bearer ${getTokenApi()}`
+        }
+    }
+    return fetch(url,params).then(response=>{
+        return response
+    }).then(result=>{
+        return result
+    }).catch(err=>{
+        return err
+    })
+}
+export function GetPublication(id){
+    const url = `${API_HOST}/Apublication?idPublicacion=${id}`
+    const params = {
+        headers:{
+            Authorization: `Bearer ${getTokenApi()}`
+        }
+    }
+    return fetch(url,params).then(response => {
+        return response.json()
+    }).then(result => {
+        return result
+    }).catch(err => {
+        return err
+    })
+}

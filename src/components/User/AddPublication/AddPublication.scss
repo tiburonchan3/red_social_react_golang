@@ -1,17 +1,19 @@
 @import '../../../scss/index.scss';
-.modal{
+.add-publication{
     background: rgba($color: #000000, $alpha: .8);
         .modal-content{
             background: $blue-dark;
             .modal-header{
-                img{
-                    width: 30px;
-                    margin-top: 4px;
+                .close{
                     cursor: pointer;
+                    margin-right: 10px;
+                    &:hover,&:active{
+                        color:#fff;
+                    }
                 }
                 .modal-title{
                     width: 400px;
-                    margin-right:320px;
+                    margin-right:300px;
                 }
             }
             .modal-body{
@@ -21,6 +23,22 @@
                     transition-property: display;
                     transition-duration: 1s;
                     transition-timing-function: linear;
+                    .content.show{
+                        display: none;
+                        transition: display 4s;
+                    }
+                    .content.hide{
+                        display: contents;
+                        transition: display 4s;
+                    }
+                    .area.hide{
+                        display: none;
+                        transition: display 4s;
+                    }
+                    .area.show{
+                        display: contents;
+                        transition: display 4s;
+                    }
                     .img{
                         width: 100%;
                         background-position: center;
@@ -34,16 +52,55 @@
                                 height: 150px;
                                 border:none;
                             }
+                            textarea.form-control.codigo{
+                                height: 250px !important;
+                                border-bottom:1px solid #eee !important;
+                            }
+                            .select.form-control{
+                                background: $blue-dark;
+                                font-size: 13px;
+                            }
                             .error{
                                 color:$danger;
                             }
                         }
-                    .btn-next,.btn-pub{
+                    .btn-next.show{
+                        display: none;
+                        transition: all 2s;
+                    }
+                    .btn-pub.hide{
+                        display: none;
+                    }
+                    .btn-pub.show{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .btn-prev.hide{
+                        display: none;
+                    }
+                    .btn-prev.show{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .btn-next,.btn-pub,.btn-prev{
                         width: 200px;
-                        padding:10px;
-                        font-size: 20px;
+                        padding:5px;
+                        font-size: 15px;
                         border-radius: 40px;
                         float: right;
+                        background: transparent;
+                        &:hover,&:active{
+                            background: $primary;
+                        }
+                    }
+                    .btn-prev{
+                        background: $primary;
+                        margin-right: 20px;
+                        &:hover,&:active{
+                            background:transparent;
+                        }
                     }
                 }
                 .form-data__hidde{
@@ -61,6 +118,26 @@
                     text-align: center;
                     &.img-data__show{
                         display: none;
+                    }
+                }
+            }
+            @media screen and (max-width:450px){
+                .modal-header{
+                    .close{
+                        font-size: 18px;
+                    }
+                    .modal-title{
+                        font-size: 15px;
+                        margin-right: 100px;
+                    }
+                }
+                .modal-body{
+                    .form-data__show{
+                        .form-group{
+                            textarea.form-control{
+                                height: 100px;
+                            }
+                        }
                     }
                 }
             }

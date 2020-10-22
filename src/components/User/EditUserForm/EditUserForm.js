@@ -5,9 +5,11 @@ import DatePicker from 'react-datepicker'
 import es from 'date-fns/locale/es'
 import {useDropzone} from 'react-dropzone'
 import {API_HOST} from '../../../utils/constants'
-import Image from '../../../assets/icons/image.png'
 import {uploadBannerApi,uploadAvatarApi,UpdateProfileApi} from '../../../api/user'
 import {toast} from 'react-toastify'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faImages,faEdit} from '@fortawesome/free-solid-svg-icons'
+
 
 export default function EditUserForm(props) {
     console.log(props)
@@ -85,12 +87,12 @@ export default function EditUserForm(props) {
                 style={({backgroundImage:`url('${bannerUrl}')`})}
                 {...getRootBannerProps()}
             >
-              <div className="mask">
-                <img src={Image}/>
-              <input
-                    {...getInputBannerProps()}
-                />
-              </div>
+                <div className="mask">
+                    <span><FontAwesomeIcon icon={faImages}/></span>
+                <input
+                        {...getInputBannerProps()}
+                    />
+                </div>
             </div>
             <div
                 className="avatar"
@@ -99,7 +101,7 @@ export default function EditUserForm(props) {
             >
               <div className="mask">
                     <div className="mask">
-                        <img src={Image}/>
+                        <img src={Image} alt=""/>
                         <input
                             {...getInputAvatarProps()}
                         />
@@ -137,7 +139,9 @@ export default function EditUserForm(props) {
                         placeholder="agrega tu biografia"
                         name="biografia"
                         defaultValue={formData.biografia}
-                        onChange={onChange}>
+                        onChange={onChange}
+                        className="area"
+                        >
                     </Form.Control>
                 </Form.Group>
                 <Row>
@@ -173,7 +177,12 @@ export default function EditUserForm(props) {
                         </Form.Control>
                 </Form.Group>
                 <Button variant="primary" type="submit" className="btn-submit">
-                    {spinner ? <Spinner animation="border" size="sm"></Spinner> : "Actualizar"}
+                    {spinner ? <Spinner animation="border" size="sm"></Spinner> :
+                                <span>
+                                    <FontAwesomeIcon icon={faEdit}/>
+                                    Actualizar
+                                </span>
+                    }
                 </Button>
             </Form>
         </div>
