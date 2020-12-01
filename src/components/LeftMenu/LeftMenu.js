@@ -29,7 +29,7 @@ export default function LeftMenu(props) {
             <NavLink exact to={`/${userLog?._id}`} className="link">
                 <FontAwesomeIcon icon={faUser} /> Mi Cuenta
             </NavLink>
-            <p className="link" onClick={Logout}>
+            <p className="link" onClick={Logout} style={{cursor: 'pointer'}}>
                 <FontAwesomeIcon icon={faSignOutAlt} /> Cerrar Sesion
             </p>
         </div>

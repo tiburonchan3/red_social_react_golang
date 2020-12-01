@@ -2,10 +2,11 @@ import React from 'react'
 import {CopyBlock,dracula} from 'react-code-blocks'
 import './PublicationInfo.scss'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faThumbsUp,faCommentAlt} from '@fortawesome/free-solid-svg-icons'
+import * as Solid from '@fortawesome/free-solid-svg-icons'
+import * as Regular from '@fortawesome/free-regular-svg-icons'
 
 export default function PublicationInfo(props) {
-    const {pub} = props
+    const {pub,comments} = props
     return (
         <>
             <div className="publication">
@@ -26,13 +27,17 @@ export default function PublicationInfo(props) {
                 </div>
                 <div className="publication__like-comment">
                 <span className="like">
-                   <FontAwesomeIcon icon={faThumbsUp} />
-                    <span className="count">140</span>
+                   <FontAwesomeIcon icon={Regular.faHeart} />
+                    <span className="count">1</span>
                </span>
-               <span  className="comments">
-                    <FontAwesomeIcon icon={faCommentAlt} />
-                    <span className="count">140</span>
-                </span>
+                {
+                    comments && (
+                        <span  className="comments">
+                            <FontAwesomeIcon icon={Solid.faCommentAlt} />
+                            <span className="count">{comments.length}</span>
+                        </span>
+                    )
+                }
                 <div className="hr"/>
                 </div>
             </div>

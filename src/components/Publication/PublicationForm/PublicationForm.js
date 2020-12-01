@@ -6,13 +6,14 @@ import {toast} from 'react-toastify'
 
 export default function PublicationForm(props) {
     const [comentario, setComentario] = useState(initial)
-    const {id} = props
+    const {id,setRefreshComments} = props
     const Submit = (e)=>{
         e.preventDefault()
         if(comentario.comentario !== ''){
             createComment(id,comentario).then(() => {
                toast.success("se añadio el comentario")
                setComentario(initial)
+               setRefreshComments(true)
             }).catch(err =>{
                 console.log(err)
             })
@@ -26,7 +27,7 @@ export default function PublicationForm(props) {
 
         return (
         <Form onChange={Change} onSubmit={Submit}>
-            <div className="comment">
+            <div className="comment-form">
                 <Form.Group>
                     <Form.Control defaultValue={comentario.comentario} type="text" name="comentario"/>
                 </Form.Group>

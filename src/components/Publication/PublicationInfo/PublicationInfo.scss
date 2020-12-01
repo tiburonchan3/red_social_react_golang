@@ -10,14 +10,14 @@
     &__code{
         .komBMP{
             width: 100%;
-            height: 400px;
+            height: 350px;
             overflow-y: scroll;
             padding: 30px !important;
         }
     }
     &__like-comment{
         font-weight: bold;
-            font-size: 30px;
+            font-size: 20px;
         .like{
             margin-left: 30px;
             .count{

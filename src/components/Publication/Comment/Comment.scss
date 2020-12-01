@@ -1,0 +1,35 @@
+@import '../../../scss/index.scss';
+.comment_content{
+    margin-bottom: 20px;
+    .comment{
+        display: block;
+        &__user-info{
+            display: flex;
+            img{
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+            }
+            .user-name{
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 15px;
+                margin-left: 10px;
+            }
+            .fecha_comment{
+                margin-top: 15px;
+                font-size: 12px;
+                margin-left: 10px;
+                color: $primary_grey;
+            }
+        }
+        &__comment-body{
+            background-color: $blue_dark_second;
+            padding: 20px;
+            margin-top: 10px;
+        }
+    }
+    .reactions{
+        margin-top: 10px;
+    }
+}
