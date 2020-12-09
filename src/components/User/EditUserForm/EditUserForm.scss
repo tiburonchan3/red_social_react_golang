@@ -3,6 +3,7 @@
 .edit-user-form{
     padding: 20px;
     .banner{
+        background: $primary_dark;
         height: 170px;
         width: 100%;
         background-size: cover;
@@ -18,6 +19,7 @@
             justify-content: center;
             span{
                 font-size: 35px;
+                cursor: pointer;
             }
         }
         &:hover{
@@ -27,6 +29,7 @@
         }
     }
     .avatar{
+        background-color: aliceblue;
         width: 100px;
         height: 100px;
         background-size: cover;

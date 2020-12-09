@@ -1,0 +1,28 @@
+@import '../../../scss/index.scss';
+.reaction-section{
+    cursor: pointer;
+    display: flex;
+    .like{
+        font-size: 20px;
+        .solid-like{
+            color: $primary;
+        }
+    }
+    .dislike{
+        margin-left: 80px;
+        font-size: 20px;
+        .solid-dislike{
+            color: $primary;
+        }
+    }
+    .no-like{
+        font-size: 20px;
+        .solid-like{
+            color: $primary;
+        }
+    }
+    .no-dislike{
+        margin-left: 80px;
+        font-size: 20px;
+    }
+}
