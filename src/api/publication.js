@@ -1,14 +1,18 @@
 import {getTokenApi} from './auth'
 import {API_HOST} from '../utils/constants'
 
-export function AddPublicationApi(formData){
+export function AddPublicationApi(data,foto){
+    const formData = new FormData()
+    formData.append("foto",foto)
+    formData.append("publicacion",data.publicacion)
+    formData.append("tecnologias",data.tecnologias)
     const url = `${API_HOST}/publicacion`
     const params = {
         method: "POST",
         headers:{
             Authorization: `Bearer ${getTokenApi()}`
         },
-        body:JSON.stringify(formData)
+        body:formData
     }
     return fetch(url,params).then(response=>{
         return response
@@ -90,7 +94,7 @@ export function addReaction(id){
         }
     }
     return fetch(url,params).then(response => {
-        return response.json()
+        return response
     }).then(result => {
         return result
     }).catch(err => {

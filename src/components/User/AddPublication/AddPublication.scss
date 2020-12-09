@@ -143,3 +143,19 @@
             }
         }
 }
+.up-icon{
+    font-size: 50px;
+}
+.up-image{
+    margin-top: -50px;
+    width: 15%;
+    margin-left: 90px;
+    cursor: pointer;
+    &:hover{
+        position: absolute;
+        width: 100%;
+        left: -10%;
+        top: 0;
+    }
+}
+

@@ -12,7 +12,12 @@ export default function Home(props) {
     const [publications, setPublications] = useState(null)
     useEffect(() => {
        GetAllPublicationApi(page).then((response) => {
-          console.log(response)
+        setPublications(formatModel(response))
+        if(response.lenght > 0){
+
+        }
+       }).catch(()=>{
+           console.log("error en algun lugar del codigo")
        })
     }, [page])
     return (
@@ -27,12 +32,13 @@ function formatModel(publications){
     const tempPublication = []
     publications.forEach(publication => {
        tempPublication.push({
-        _id:publication._id,
+        id:publication.Publicacion._id,
+        foto:publication.Publicacion.foto,
         userid:publication.userRelationid,
         publicacion:publication.Publicacion.publicacion,
-        fechaPublicacion:publication.Publicacion.fecha
+        fechaPublicacion:publication.Publicacion.fecha,
+        tecnologias:publication.Publicacion.tecnologias
        })
-       console.log(publication)
     });
     return tempPublication
 }

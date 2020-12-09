@@ -19,8 +19,18 @@
         font-weight: bold;
             font-size: 20px;
         .like{
+            cursor: pointer;
             margin-left: 30px;
             .count{
+                margin-left: 10px;
+            }
+        }
+        .solid-like{
+            cursor: pointer;
+            margin-left: 30px;
+            color:$danger;
+            .count{
+                color:#fff;
                 margin-left: 10px;
             }
         }

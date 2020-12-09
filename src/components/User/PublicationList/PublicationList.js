@@ -10,7 +10,6 @@ import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Solid from "@fortawesome/free-solid-svg-icons";
 import * as Regular from "@fortawesome/free-regular-svg-icons";
-import { CopyBlock, dracula } from "react-code-blocks";
 import { Link } from "react-router-dom";
 import PopOver from "../../Publication/PopOver";
 import useAuth from "../../../hooks/useAuth";
@@ -42,7 +41,8 @@ function Publication(props) {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [reactions, setReactions] = useState([]);
   const [userReact, setUserReact] = useState([]);
-  const [refreshReactions, setRefreshReactions] = useState(false)
+  const [refreshReactions, setRefreshReactions] = useState(null)
+  const pubPhoto = `${API_HOST}/mostrarFotoPub?id=${publication.id}`
   const user = useAuth();
   const isUserPublication = () => {
     if (loggedUser._id === publication.userid) {
@@ -67,19 +67,20 @@ function Publication(props) {
             : NotFound
         );
       })
-      .catch((err) => {
+      .catch(() => {
         alert("error");
       });
-    Comment.getComments(publication._id)
+    Comment.getComments(publication.id)
       .then((response) => {
         setComments(response);
       })
       .catch((err) => {
         console.log(err);
       });
-    readReaction(publication._id)
+    readReaction(publication.id)
       .then((response) => {
         setReactions(response || []);
+        console.log(response)
       })
       .catch(() => {
         console.log("error en el codigo maldito si que si");
@@ -92,7 +93,7 @@ function Publication(props) {
     }
   }, [reactions]);
   const addReactionPublication = () => {
-    let id = publication._id;
+    let id = publication.id;
     if (userReact.length === 0) {
       addReaction(id)
         .then(() => {
@@ -100,11 +101,9 @@ function Publication(props) {
         })
         .catch("error en el codigo");
     } else {
-      deleteReaction(id)
-        .then(() => {
+      deleteReaction(id).then(() => {
           setRefreshReactions(true)
-        })
-        .catch("error en el codigo");
+        }).catch("error en el codigo");
     }
   };
 
@@ -128,16 +127,10 @@ function Publication(props) {
           }}
         />
         <div>
+            <img src={pubPhoto} alt="no-image" className="photoPub"/>
           <div className="lang">
-            <span>#{publication.tecnologias}</span>
+            {publication.tecnologias &&<span>#{publication.tecnologias}</span>}
           </div>
-          <CopyBlock
-            text={publication.code}
-            language={publication.tecnologias}
-            showLineNumbers={true}
-            theme={dracula}
-            wrapLines
-          />
         </div>
         <div className="options">
           {userReact.length > 0 ? (
@@ -151,14 +144,12 @@ function Publication(props) {
               <span className="count">{reactions.length || ""}</span>
             </span>
           )}
-          {comments && (
-            <Media as={Link} to={`/u/${publication.userid}/${publication._id}`}>
+            <Media as={Link} to={`/u/${publication.userid}/${publication.id}`}>
               <span className="comments">
                 <FontAwesomeIcon icon={Solid.faCommentAlt} />
-                <span className="count">{comments.length}</span>
+                {comments &&(<span className="count">{comments.length}</span>)}
               </span>
             </Media>
-          )}
         </div>
         <PopOver
           setRefreshPublication={setRefreshPublication}

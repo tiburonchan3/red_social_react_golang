@@ -35,7 +35,7 @@ export function getComments(id){
     })
 }
 export function getReactionsComment(id){
-    const url = `${API_HOST}/readRCommet?idP=${id}`
+    const url = `${API_HOST}/readRComment?idP=${id}`
     const params = {
         headers:{
             "Content-Type":"application/json",
@@ -60,15 +60,15 @@ export function addReactionComment(id,react){
         }
     }
     return fetch(url,params)
-    .then((response)=>{
+    .then(response=>{
         return response.json()
     })
-    .catch((err)=>{
+    .catch(err=>{
         return err
     })
 }
 export function deleteReactionComment(id){
-    const url = `${API_HOST}/delRCommet?id=${id}`
+    const url = `${API_HOST}/delRComment?id=${id}`
     const params = {
         method: 'DELETE',
         headers:{

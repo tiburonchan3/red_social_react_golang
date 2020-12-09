@@ -6,7 +6,7 @@ import {isUserLoggedApi} from './api/auth'
 import Routing from './routes/routing'
 
 export default function App() {
-    const [user,setUser] = useState(null);
+    const [user,setUser] = useState(undefined);
     const [loadUser,setLoadUser] = useState(false);
     const [refreshCheckLogin,setRefreshCheckLogin] = useState(false)
     useEffect(() => {

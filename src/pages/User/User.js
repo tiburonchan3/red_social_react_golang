@@ -74,14 +74,10 @@ function User(props){
                 {publications &&(<PublicationList setRefreshPublication={setRefreshPublication} loggedUser={loggedUser} publications={publications}/>)}
             </div>
                <Button onClick={morePublication} className="more">
-               {!loadingPublication ? (
+               {loadingPublication < 0 ? (
                    (loadingPublication !== 0) && "Ver mas..."
                    ) : (
-                       <Spinner as="span"
-                       animation="grow"
-                       size="sm"
-                       role="status"
-                       arian-hidden="true"/>
+                      "No hay mas publicaciones para mostrar"
                    )
                }
             </Button>

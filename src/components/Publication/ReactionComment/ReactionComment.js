@@ -34,14 +34,14 @@ export default function ReactionComment(props) {
         }
     }
     const deleteReaction = ()=> {
-        Comment.deleteReactionComment(id).then(response=>{
-            console.log("se Elimino la reacion")
-            setRefreshComment(true)
-        }).catch(()=>{
-            console.log("error en el codigo weon qliao")
-        })
+        console.log(likes)
+        // Comment.deleteReactionComment(id).then(response=>{
+        //     console.log("se Elimino la reacion")
+        //     setRefreshComment(true)
+        // }).catch(()=>{
+        //     console.log("error en el codigo weon qliao")
+        // })
     }
-    console.log(likes)
     return (
         <div className="reaction-section">
             {userLike.length > 0 ? (
