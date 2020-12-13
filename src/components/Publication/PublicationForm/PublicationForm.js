@@ -8,12 +8,15 @@ export default function PublicationForm(props) {
     const [comentario, setComentario] = useState(initial)
     const {id,setRefreshComments} = props
     const Submit = (e)=>{
+        setRefreshComments(true)
         e.preventDefault()
         if(comentario.comentario !== ''){
             createComment(id,comentario).then(() => {
+                setRefreshComments(false)
                toast.success("se añadio el comentario")
-               setComentario(initial)
-               setRefreshComments(true)
+               document.getElementById('comment').value = ""
+               document.getElementById('form').reset();
+               setComentario('')
             }).catch(err =>{
                 console.log(err)
             })
@@ -26,10 +29,10 @@ export default function PublicationForm(props) {
     }
 
         return (
-        <Form onChange={Change} onSubmit={Submit}>
+        <Form id="form" onChange={Change} onSubmit={Submit}>
             <div className="comment-form">
                 <Form.Group>
-                    <Form.Control defaultValue={comentario.comentario} type="text" name="comentario"/>
+                    <Form.Control placeholder="Escribe un comentario......" id="comment" defaultValue={comentario.comentario} type="text" name="comentario"/>
                 </Form.Group>
                 <Button type="submit">Comentar</Button>
             </div>

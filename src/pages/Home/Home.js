@@ -9,7 +9,7 @@ export default function Home(props) {
     const {setRefreshCheckLogin} = props
     const [showModal, setShowModal] = useState(false)
     const [page, setPage] = useState(1)
-    const [publications, setPublications] = useState(null)
+    const [publications, setPublications] = useState([])
     useEffect(() => {
        GetAllPublicationApi(page).then((response) => {
         setPublications(formatModel(response))

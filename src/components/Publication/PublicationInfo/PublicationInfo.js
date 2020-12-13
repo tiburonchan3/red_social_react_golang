@@ -10,6 +10,7 @@ import {
 } from "../../../api/publication";
 import useAuth from "../../../hooks/useAuth";
 import { API_HOST } from "../../../utils/constants";
+import './PublicationInfo.scss'
 
 export default function PublicationInfo(props) {
   const { pub, comments } = props;

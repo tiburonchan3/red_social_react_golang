@@ -28,6 +28,9 @@
         &:hover, &:focus{
             color:$primary;
         }
+        @media screen and (min-width:400px) and (max-width:450px){
+            margin-left: 10%;
+        }
     }
     &__title{
         border-bottom: 1px solid $grey_dark;

@@ -9,10 +9,13 @@ import {uploadBannerApi,uploadAvatarApi,UpdateProfileApi} from '../../../api/use
 import {toast} from 'react-toastify'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faImages,faEdit} from '@fortawesome/free-solid-svg-icons'
+import { getTokenApi } from '../../../api/auth'
+import jwt from 'jwt-decode'
 
 
 export default function EditUserForm(props) {
-    console.log(props)
+    const userToken = jwt(getTokenApi())
+    console.log(userToken)
     const {user,setModalShow} = props
     const [formData, setFormData] = useState(initialValue(user))
     const [bannerUrl, setBannerUrl] = useState(
