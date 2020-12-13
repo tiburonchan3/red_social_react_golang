@@ -7,12 +7,14 @@ export default function UserPublication(props) {
     return (
         <div className="info">
             <img src={avatarUrl} alt="none"/>
-            <div className="info__user">
+            <div className="info-user">
+            <div className="name-user">
                 <p>{user?.nombre} {user?.apellidos}</p>
             </div>
-            <span className="info__fecha">
+            <span className="date-user">
                 {moment(pub.fecha).calendar()}
             </span>
+            </div>
         </div>
     )
 }

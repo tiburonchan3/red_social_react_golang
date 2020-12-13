@@ -1,4 +1,4 @@
-export const API_HOST = "http://localhost:8000"
+export const API_HOST = "https://redsocialherok.herokuapp.com"
 //URL HEROKU
 //https://redsocialherok.herokuapp.com/
 //URL LOCAL

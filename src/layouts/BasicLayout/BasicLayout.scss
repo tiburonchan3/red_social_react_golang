@@ -37,6 +37,7 @@
     @media screen and (max-width:450px){
         .bars{
             visibility: visible;
+            position: fixed;
         }
         &__menu.col-3{
             position: absolute;
